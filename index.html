@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLOv8 Real-Time Detection</title>
+</head>
+<body>
+    <h1>Real-Time Object Detection (YOLOv8)</h1>
+    <img id="video-frame" width="640" height="480">
+
+    <script>
+        const img = document.getElementById("video-frame");
+        const socket = new WebSocket("ws://127.0.0.1:8000/video");
+
+        socket.onmessage = (event) => {
+            img.src = "data:image/jpeg;base64," + event.data;
+        };
+    </script>
+</body>
+</html>
